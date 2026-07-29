@@ -11,7 +11,7 @@ export default function Signup() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [form, setForm] = useState({
-    name: '', email: '', phone: '', password: '', confirm: '', agree: false
+    firstName: '', lastName: '', email: '', phone: '', password: '', confirm: '', agree: false
   });
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ export default function Signup() {
     e.preventDefault();
     setError('');
 
-    if (!form.name || !form.email || !form.password || !form.confirm) {
+    if (!form.firstName || !form.lastName || !form.email || !form.password || !form.confirm) {
       setError('Please fill in all required fields.');
       return;
     }
@@ -140,21 +140,39 @@ export default function Signup() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Full Name */}
-                  <div>
-                    <label className="block text-xs font-bold text-[#0F172A] mb-1.5">
-                      Full Name <span className="text-rose-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Your full name"
-                        className="w-full pl-11 pr-4 py-3 rounded-2xl glass-input text-sm font-medium text-[#0F172A] placeholder-[#94A3B8]"
-                      />
-                      <User className="absolute left-4 top-3.5 w-4 h-4 text-[#94A3B8]" />
+                  {/* First Name & Last Name */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#0F172A] mb-1.5">
+                        First Name <span className="text-rose-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={form.firstName}
+                          onChange={handleChange}
+                          placeholder="First name"
+                          className="w-full pl-11 pr-4 py-3 rounded-2xl glass-input text-sm font-medium text-[#0F172A] placeholder-[#94A3B8]"
+                        />
+                        <User className="absolute left-4 top-3.5 w-4 h-4 text-[#94A3B8]" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#0F172A] mb-1.5">
+                        Last Name <span className="text-rose-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={form.lastName}
+                          onChange={handleChange}
+                          placeholder="Last name"
+                          className="w-full pl-11 pr-4 py-3 rounded-2xl glass-input text-sm font-medium text-[#0F172A] placeholder-[#94A3B8]"
+                        />
+                        <User className="absolute left-4 top-3.5 w-4 h-4 text-[#94A3B8]" />
+                      </div>
                     </div>
                   </div>
 
@@ -303,7 +321,7 @@ export default function Signup() {
                   Account Created! 🎉
                 </h3>
                 <p className="text-sm text-[#64748B] max-w-xs mx-auto">
-                  Welcome to Wedora, {form.name.split(' ')[0]}! Your wedding luxury journey begins now. Redirecting…
+                  Welcome to Wedora, {form.firstName}! Your wedding luxury journey begins now. Redirecting…
                 </p>
               </div>
             )}
